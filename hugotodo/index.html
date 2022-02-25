@@ -16,7 +16,7 @@
 <meta name=application-name content="FeelIt">
 <meta name=apple-mobile-web-app-title content="FeelIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://nbeara.github.io/hugotodo/><link rel=prev href=https://nbeara.github.io/my-first-post/><link rel=stylesheet href=/css/page.min.css><link rel=stylesheet href=/css/home.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"使用hugo+github pages+github action实现自动部署博客","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/nbeara.github.io\/hugotodo\/"},"genre":"posts","keywords":"hugo, github pages, github action, blog, FeelIt","wordcount":2304,"url":"https:\/\/nbeara.github.io\/hugotodo\/","datePublished":"2022-02-25T16:19:20+08:00","dateModified":"2022-02-25T16:19:20+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"NBeara"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://nbeara.github.io/hugotodo/><link rel=prev href=https://nbeara.github.io/my-first-post/><link rel=stylesheet href=/css/page.min.css><link rel=stylesheet href=/css/home.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"使用hugo+github pages+github action实现自动部署博客","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/nbeara.github.io\/hugotodo\/"},"genre":"posts","keywords":"hugo, github pages, github action, blog, FeelIt","wordcount":2352,"url":"https:\/\/nbeara.github.io\/hugotodo\/","datePublished":"2022-02-25T16:19:20+08:00","dateModified":"2022-02-25T16:19:20+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"NBeara"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
 <div class=header-title>
@@ -82,7 +82,7 @@
 <div class=toc-content id=toc-content-auto></div>
 </div><article class="page single" data-toc=enable><div class=single-card><h2 class="single-title animated flipInX">使用hugo+github pages+github action实现自动部署博客</h2><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>NBeara</a></span>&nbsp;<span class=post-category>出版于 <a href=/categories/%E7%AC%94%E8%AE%B0/><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-<div class=post-meta-line><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-02-25>2022-02-25</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2304 字</span>&nbsp;
+<div class=post-meta-line><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-02-25>2022-02-25</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2352 字</span>&nbsp;
 <span><i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟</span>&nbsp;<span id=/hugotodo/ class=leancloud_visitors data-flag-title="使用hugo+github pages+github action实现自动部署博客">
 <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
 </span>&nbsp;</div>
@@ -181,7 +181,7 @@ cmd命令行输入<code>hugo version</code>,如果成功安装会显示版本号
 <ul>
 <li>
 <p>打开<code>yourSites/config.toml</code></p>
-<ul>
+</li>
 <li>
 <p>复制以下内容：</p>
 <div class=highlight><div class=chroma>
@@ -238,6 +238,7 @@ cmd命令行输入<code>hugo version</code>,如果成功安装会显示版本号
 </span><span class=lnt>50
 </span><span class=lnt>51
 </span><span class=lnt>52
+</span><span class=lnt>53
 </span></code></pre></td>
 <td class=lntd>
 <pre tabindex=0 class=chroma><code class=language-markdown data-lang=markdown>baseURL = &#34;http://example.org/&#34;
@@ -292,23 +293,10 @@ cmd命令行输入<code>hugo version</code>,如果成功安装会显示版本号
   [markup.highlight]
     # false 是必要的设置 (https://github.com/khusika/FeelIt/issues/158)
     noClasses = false
-</code></pre></td></tr></table>
-</div>
-</div><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>
-
 
 </code></pre></td></tr></table>
 </div>
 </div></li>
-</ul>
-</li>
 </ul>
 <h3 id=创建一篇文章>创建一篇文章</h3>
 <p><code>hugo new posts/my-first-post.md</code></p>
@@ -420,6 +408,7 @@ git push -u origin main <span class=c1># 将本地内容推送到远程</span>
 </span><span class=lnt>34
 </span><span class=lnt>35
 </span><span class=lnt>36
+</span><span class=lnt>37
 </span></code></pre></td>
 <td class=lntd>
 <pre tabindex=0 class=chroma><code class=language-yml data-lang=yml><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>hugo-blog</span><span class=w>
@@ -427,7 +416,7 @@ git push -u origin main <span class=c1># 将本地内容推送到远程</span>
 </span><span class=w></span><span class=nt>on</span><span class=p>:</span><span class=w>
 </span><span class=w>  </span><span class=nt>push</span><span class=p>:</span><span class=w>
 </span><span class=w>    </span><span class=nt>branches</span><span class=p>:</span><span class=w>
-</span><span class=w>      </span>- <span class=l>main </span><span class=w> </span><span class=c># 博客根目录的默认分支，这里是main，有时也是master</span><span class=w>
+</span><span class=w>      </span>- <span class=l>main </span><span class=w> </span><span class=c># 站点根目录的默认分支，这里是main，有时也是master</span><span class=w>
 </span><span class=w>  </span><span class=nt>pull_request</span><span class=p>:</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=nt>jobs</span><span class=p>:</span><span class=w>
@@ -437,14 +426,14 @@ git push -u origin main <span class=c1># 将本地内容推送到远程</span>
 </span><span class=w>      </span><span class=nt>group</span><span class=p>:</span><span class=w> </span><span class=l>${{ github.workflow }}-${{ github.ref }}</span><span class=w>
 </span><span class=w>    </span><span class=nt>steps</span><span class=p>:</span><span class=w>
 </span><span class=w>      </span>- <span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/checkout@v2</span><span class=w>
-</span><span class=w></span><span class=c>#         with:               # 如果你安装主题时用的是git submodule add</span><span class=w>
-</span><span class=w></span><span class=c>#           submodules: true  # 那么这三行不必注释掉，这一行填写 true</span><span class=w>
-</span><span class=w></span><span class=c>#           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod</span><span class=w>
+</span><span class=w>        </span><span class=nt>with</span><span class=p>:</span><span class=w>               </span><span class=c># 如果你安装主题时用的是git submodule add</span><span class=w>
+</span><span class=w>           </span><span class=nt>submodules</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>  </span><span class=c># 那么这三行不必注释掉，这一行填写 true</span><span class=w>
+</span><span class=w>           </span><span class=nt>fetch-depth</span><span class=p>:</span><span class=w> </span><span class=m>0</span><span class=w>    </span><span class=c># Fetch all history for .GitInfo and .Lastmod</span><span class=w>
 </span><span class=w>
 </span><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Setup Hugo</span><span class=w>
 </span><span class=w>        </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>peaceiris/actions-hugo@v2</span><span class=w>
 </span><span class=w>        </span><span class=nt>with</span><span class=p>:</span><span class=w>
-</span><span class=w>          </span><span class=nt>hugo-version</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;latest&#34;</span><span class=w>  </span><span class=c># 使用最新版本hugo</span><span class=w>
+</span><span class=w>          </span><span class=nt>hugo-version</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;latest&#34;</span><span class=w>  </span><span class=c># 填写你的hugo版本，可用hugo version查看</span><span class=w>
 </span><span class=w>          </span><span class=nt>extended</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>          </span><span class=c># 如果你使用的不是extended版本的hugo，将true改为false</span><span class=w>
 </span><span class=w>
 </span><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Build</span><span class=w>
@@ -455,7 +444,8 @@ git push -u origin main <span class=c1># 将本地内容推送到远程</span>
 </span><span class=w>        </span><span class=nt>if</span><span class=p>:</span><span class=w> </span><span class=l>${{ github.ref == &#39;refs/heads/main&#39; }} </span><span class=w> </span><span class=c># 注意填写main或者master</span><span class=w>
 </span><span class=w>        </span><span class=nt>with</span><span class=p>:</span><span class=w>
 </span><span class=w>          </span><span class=nt>personal_token</span><span class=p>:</span><span class=w> </span><span class=l>${{ secrets.PERSONAL_TOKEN }}</span><span class=w> </span><span class=c># 如果secret取了其他名称，将PERSONAL_TOKEN替换掉</span><span class=w>
-</span><span class=w>          </span><span class=nt>external_repository</span><span class=p>:</span><span class=w> </span><span class=l>&lt;username&gt;/&lt;username&gt;.github.io</span><span class=w> </span><span class=c># 填写远程仓库，不一定是这个格式，按照自己的情况写 </span><span class=w>
+</span><span class=w>          </span><span class=nt>external_repository</span><span class=p>:</span><span class=w> </span><span class=l>NBeara/NBeara.github.io</span><span class=w> </span><span class=c># 填写远程仓库，不一定是这个格式，按照自己的情况写 </span><span class=w>
+</span><span class=w>          </span><span class=nt>publish_branch</span><span class=p>:</span><span class=w> </span><span class=l>main</span><span class=w> </span><span class=c># 指定推送到github pages的某一个分支，默认为gh-pages</span><span class=w>
 </span><span class=w>          </span><span class=nt>publish_dir</span><span class=p>:</span><span class=w> </span><span class=l>./public</span><span class=w>
 </span><span class=w>          </span><span class=c>#cname: blog.example.com        # 填写你的自定义域名。如果没有用自定义域名，注释掉这行</span><span class=w>
 </span></code></pre></td></tr></table>
