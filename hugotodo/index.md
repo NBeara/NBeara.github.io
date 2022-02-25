@@ -65,65 +65,66 @@
 
 #### 基础配置：
 
-- 打开`yourSites/config.toml`
+打开`yourSites/config.toml`
 
-- 复制以下内容：
+复制以下内容：
 
-  ```markdown
-  baseURL = "http://example.org/"
-  # [en, zh-cn, fr, ...] 设置默认的语言
-  defaultContentLanguage = "zh-cn"
-  # 网站语言, 仅在这里 CN 大写
-  languageCode = "zh-CN"
-  # 是否包括中日韩文字
-  hasCJKLanguage = true
-  # 网站标题
-  title = "我的全新 Hugo 网站"
-  
-  # 更改使用 Hugo 构建网站时使用的默认主题
-  theme = "FeelIt"
-  
-  [params]
-    # FeelIt 主题版本
-    version = "1.0.X"
-  
-  [menu]
-    [[menu.main]]
-      identifier = "posts"
-      # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
-      pre = ""
-      # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
-      post = ""
-      name = "文章"
-      url = "/posts/"
-      # 当你将鼠标悬停在此菜单链接上时, 将显示的标题
-      title = ""
-      weight = 1
-    [[menu.main]]
-      identifier = "tags"
-      pre = ""
-      post = ""
-      name = "标签"
-      url = "/tags/"
-      title = ""
-      weight = 2
-    [[menu.main]]
-      identifier = "categories"
-      pre = ""
-      post = ""
-      name = "分类"
-      url = "/categories/"
-      title = ""
-      weight = 3
-  
-  # Hugo 解析文档的配置
-  [markup]
-    # 语法高亮设置 (https://gohugo.io/content-management/syntax-highlighting)
-    [markup.highlight]
-      # false 是必要的设置 (https://github.com/khusika/FeelIt/issues/158)
-      noClasses = false
-  
-  ```
+```markdown
+baseURL = "http://example.org/"
+# [en, zh-cn, fr, ...] 设置默认的语言
+defaultContentLanguage = "zh-cn"
+# 网站语言, 仅在这里 CN 大写
+languageCode = "zh-CN"
+# 是否包括中日韩文字
+hasCJKLanguage = true
+# 网站标题
+title = "我的全新 Hugo 网站"
+
+# 更改使用 Hugo 构建网站时使用的默认主题
+theme = "FeelIt"
+
+[params]
+  # FeelIt 主题版本
+  version = "1.0.X"
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
+    pre = ""
+    # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
+    post = ""
+    name = "文章"
+    url = "/posts/"
+    # 当你将鼠标悬停在此菜单链接上时, 将显示的标题
+    title = ""
+    weight = 1
+  [[menu.main]]
+    identifier = "tags"
+    pre = ""
+    post = ""
+    name = "标签"
+    url = "/tags/"
+    title = ""
+    weight = 2
+  [[menu.main]]
+    identifier = "categories"
+    pre = ""
+    post = ""
+    name = "分类"
+    url = "/categories/"
+    title = ""
+    weight = 3
+
+# Hugo 解析文档的配置
+[markup]
+  # 语法高亮设置 (https://gohugo.io/content-management/syntax-highlighting)
+  [markup.highlight]
+    # false 是必要的设置 (https://github.com/khusika/FeelIt/issues/158)
+    noClasses = false
+
+```
+
 
 
 
@@ -133,6 +134,7 @@
 `hugo new posts/my-first-post.md`
 
 这篇文章生成在站点根目录下`/contents`文件夹中
+
 
 
 
@@ -265,7 +267,6 @@ new repository -> 设置为private->创建
 git add . # 添加目录下全部内容
 git commit -m "new blog" # 提交说明，出问题了可以回退到之前的commit
 git push -u origin main # 将本地内容推送到远程
-
 ```
 
 
