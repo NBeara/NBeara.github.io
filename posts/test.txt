@@ -1,0 +1,39 @@
+---
+title: "Test"
+date: 2022-02-25T21:44:27+08:00
+draft: true
+---
+
+``
+
+{{<admonition warning "警告！">}}
+
+请注意文章**时效性**
+
+{{</admonition>}}
+
+
+
+
+
+{{<admonition danger "危险！">}}
+
+**私钥请勿上传到本机外的地方！**
+
+{{</admonition>}}
+
+
+
+{{<admotion warning "警告！">}}
+
+页面刷新后这个token不再显示
+
+{{</admotion>}}
+
+
+
+{{<admotion warning "警告！">}}
+
+现在 github 的默认分支从 master 换成了 main
+
+{{</admotion>}}
