@@ -58,8 +58,18 @@
 
 	确保当前目录是站点根目录<example>
 
-	`git init`
-	`git submodule add https://github.com/khusika/FeelIt.git themes/FeelIt`
+	```bash
+	git init
+	git submodule add https://github.com/khusika/FeelIt.git themes/FeelIt
+	```
+	
+	
+
+
+
+我使用的是第三种方法，会影响后面action的yml配置
+
+
 
 
 
@@ -70,6 +80,7 @@
 复制以下内容：
 
 ```markdown
+# t你gihub pages的github.io链接
 baseURL = "http://example.org/"
 # [en, zh-cn, fr, ...] 设置默认的语言
 defaultContentLanguage = "zh-cn"

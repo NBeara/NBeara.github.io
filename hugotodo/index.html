@@ -16,7 +16,7 @@
 <meta name=application-name content="FeelIt">
 <meta name=apple-mobile-web-app-title content="FeelIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://nbeara.github.io/hugotodo/><link rel=prev href=https://nbeara.github.io/my-first-post/><link rel=stylesheet href=/css/page.min.css><link rel=stylesheet href=/css/home.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"使用hugo+github pages+github action实现自动部署博客","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/nbeara.github.io\/hugotodo\/"},"genre":"posts","keywords":"hugo, github pages, github action, blog, FeelIt","wordcount":2351,"url":"https:\/\/nbeara.github.io\/hugotodo\/","datePublished":"2022-02-25T16:19:20+08:00","dateModified":"2022-02-25T16:19:20+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"NBeara"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://nbeara.github.io/hugotodo/><link rel=prev href=https://nbeara.github.io/my-first-post/><link rel=stylesheet href=/css/page.min.css><link rel=stylesheet href=/css/home.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"使用hugo+github pages+github action实现自动部署博客","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/nbeara.github.io\/hugotodo\/"},"genre":"posts","keywords":"hugo, github pages, github action, blog, FeelIt","wordcount":2408,"url":"https:\/\/nbeara.github.io\/hugotodo\/","datePublished":"2022-02-25T16:19:20+08:00","dateModified":"2022-02-25T16:19:20+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"NBeara"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
 <div class=header-title>
@@ -82,7 +82,7 @@
 <div class=toc-content id=toc-content-auto></div>
 </div><article class="page single" data-toc=enable><div class=single-card><h2 class="single-title animated flipInX">使用hugo+github pages+github action实现自动部署博客</h2><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>NBeara</a></span>&nbsp;<span class=post-category>出版于 <a href=/categories/%E7%AC%94%E8%AE%B0/><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-<div class=post-meta-line><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-02-25>2022-02-25</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2351 字</span>&nbsp;
+<div class=post-meta-line><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-02-25>2022-02-25</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2408 字</span>&nbsp;
 <span><i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟</span>&nbsp;<span id=/hugotodo/ class=leancloud_visitors data-flag-title="使用hugo+github pages+github action实现自动部署博客">
 <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
 </span>&nbsp;</div>
@@ -173,10 +173,20 @@ cmd命令行输入<code>hugo version</code>,如果成功安装会显示版本号
 <li>
 <p>将主题仓库作为网站目录的子模块</p>
 <p>确保当前目录是站点根目录<example></p>
-<p><code>git init</code>
-<code>git submodule add https://github.com/khusika/FeelIt.git themes/FeelIt</code></p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>git init
+git submodule add https://github.com/khusika/FeelIt.git themes/FeelIt
+</code></pre></td></tr></table>
+</div>
+</div><p>``</p>
 </li>
 </ol>
+<p>我使用的是第三种方法，会影响后面action的yml配置</p>
 <h4 id=基础配置>基础配置：</h4>
 <p>打开<code>yourSites/config.toml</code></p>
 <p>复制以下内容：</p>
@@ -235,9 +245,11 @@ cmd命令行输入<code>hugo version</code>,如果成功安装会显示版本号
 </span><span class=lnt>51
 </span><span class=lnt>52
 </span><span class=lnt>53
+</span><span class=lnt>54
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-markdown data-lang=markdown>baseURL = &#34;http://example.org/&#34;
+<pre tabindex=0 class=chroma><code class=language-markdown data-lang=markdown><span class=gh># t你gihub pages的github.io链接
+</span><span class=gh></span>baseURL = &#34;http://example.org/&#34;
 <span class=gh># [en, zh-cn, fr, ...] 设置默认的语言
 </span><span class=gh></span>defaultContentLanguage = &#34;zh-cn&#34;
 <span class=gh># 网站语言, 仅在这里 CN 大写
